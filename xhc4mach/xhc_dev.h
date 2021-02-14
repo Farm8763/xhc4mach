@@ -5,11 +5,12 @@
 
 #define DEV_WHB03  sizeof( struct whb03_out_data )
 #define DEV_WHB04  sizeof( struct whb04_out_data )
+#define DEV_WHB04B sizeof( struct whb04b6_out_data)
 
 #define WHBxx_VID 0x10CE
 #define WHB03_PID 0xEB6E
 #define WHB04_PID 0xEB70
-#define WHB04B6_PID 0xEB93
+#define WHB04B4_PID 0xEB93
 
 #pragma pack( push, 1 )
 
