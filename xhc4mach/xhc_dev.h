@@ -163,8 +163,14 @@ struct whb04b6_out_data
 	uint8_t		day;
 
 	struct {
+		//CON: 0
+		//STP: 1
+		//blank: 2
 		uint8_t step_mode : 2;
+		//overrides other settings
 		uint8_t unknown_mode : 4;
+		//Hide 'reset': 0
+		//Show 'reset': 1
 		uint8_t reset_flag : 1;
 		uint8_t mc_flag : 1;
 	} display;

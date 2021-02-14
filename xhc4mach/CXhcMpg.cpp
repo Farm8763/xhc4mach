@@ -1171,7 +1171,7 @@ bool CXhcHB04BAgent::updateDisplay(void *handle)
 		WHBxx_MAGIC,
 		m_day,
 	    {
-		2,4,1,1
+		1,0,0,0
         },
 		{
 			_defract2(((m_wheel_mode == WHEEL_A) ? m_state.wc(AXIS_A) : m_state.wc(AXIS_X))),
@@ -1305,10 +1305,10 @@ bool CXhcHB04BAgent::getEvent(void *handle, unsigned int timeout_ms)
 				event.eventof(btnProbeZ);
 				break;
 			case 0x0e:
-				//TODO
+				//TODO Continuous
 				break;
 			case 0x0f:
-				//TODO
+				//TODO Step
 				break;
 			case 0x10:
 				//TODO
