@@ -79,7 +79,7 @@ enum XHC_DEV_EVENT {
 class CXhcDeviceEvent {
 public:
 	CXhcDeviceEvent() : m_event(nop), m_value(0) {};
-	CXhcDeviceEvent(std::string name, XHC_DEV_EVENT event, int value = 0) : m_dev_name(name), m_event(event), m_value(value) { }
+	CXhcDeviceEvent(std::string name, XHC_DEV_EVENT event, double value = 0) : m_dev_name(name), m_event(event), m_value(value) { }
 
 	// name of sending device, usually kind of USB device UID
 	// setter
@@ -95,14 +95,14 @@ public:
 
 	// additional integer data linked with this event, for example wheel speed
 	// setter
-	void valueof(int value) { m_value = value; }
+	void valueof(double value) { m_value = value; }
 	// getter
-	int valueof() const { return m_value; }
+	double valueof() const { return m_value; }
 protected:
 private:
 	std::string m_dev_name;
 	XHC_DEV_EVENT m_event;
-	int m_value;
+	double m_value;
 };
 
 // XHC wheel state
@@ -410,6 +410,7 @@ protected:
 	unsigned char m_day;
 	CM4otionState m_state;
 	XHC_WHEEL_MODE m_wheel_mode;
+
 	//
 	CXhcDeviceEventReceiver *m_receiver;
 	// managed device properties
@@ -452,6 +453,14 @@ private:
 class CXhcHB04Agent : public CXhcDeviceAgent {
 public:
 	CXhcHB04Agent(const CXhcDevice& device, CXhcDeviceEventReceiver *receiver) : CXhcDeviceAgent(device, receiver) {}
+private:
+	bool updateDisplay(void *handle) override;
+	bool getEvent(void *handle, unsigned int timeout_ms) override;
+};
+
+class CXhcHB04BAgent : public CXhcDeviceAgent {
+public:
+	CXhcHB04BAgent(const CXhcDevice& device, CXhcDeviceEventReceiver *receiver) : CXhcDeviceAgent(device, receiver) {}
 private:
 	bool updateDisplay(void *handle) override;
 	bool getEvent(void *handle, unsigned int timeout_ms) override;
