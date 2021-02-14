@@ -410,6 +410,7 @@ protected:
 	unsigned char m_day;
 	CM4otionState m_state;
 	XHC_WHEEL_MODE m_wheel_mode;
+	double m_step;
 
 	//
 	CXhcDeviceEventReceiver *m_receiver;

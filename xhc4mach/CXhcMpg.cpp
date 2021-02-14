@@ -1261,16 +1261,16 @@ bool CXhcHB04BAgent::getEvent(void *handle, unsigned int timeout_ms)
 
 			switch (pkt->feed_mode) {
 			case 0x0d:
-				event.valueof(0.0001);
+				m_step = 0.001;
 				break;
 			case 0x0e:
-				event.valueof(0.001);
+				m_step = 0.01;
 				break;
 			case 0x0f:
-				event.valueof(0.01);
+				m_step = 0.1;
 				break;
 			case 0x10:
-				event.valueof(1);
+				m_step = 1;
 				break;
 			case 0x1a:
 				//TODO
@@ -1357,7 +1357,7 @@ bool CXhcHB04BAgent::getEvent(void *handle, unsigned int timeout_ms)
 			}
 
 			if (pkt->wheel) {
-				event.valueof(pkt->wheel);
+				event.valueof(pkt->wheel * m_step);
 				switch (pkt->wheel_mode) {
 				case 0x11:
 					event.eventof(adjustX);
