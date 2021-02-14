@@ -1167,9 +1167,12 @@ bool CXhcHB04Agent::getEvent(void *handle, unsigned int timeout_ms)
 
 bool CXhcHB04BAgent::updateDisplay(void *handle)
 {
-	whb04_out_data cmd = {
+	whb04b6_out_data cmd = {
 		WHBxx_MAGIC,
 		m_day,
+	    {
+		2,4,1,1
+        },
 		{
 			_defract2(((m_wheel_mode == WHEEL_A) ? m_state.wc(AXIS_A) : m_state.wc(AXIS_X))),
 			_defract2(m_state.wc(AXIS_Y)),
@@ -1180,48 +1183,11 @@ bool CXhcHB04BAgent::updateDisplay(void *handle)
 		},
 		(uint16_t)m_state.feedrate_ovr(),
 		(uint16_t)m_state.sspeed_ovr(),
-		(uint16_t)m_state.feedrate(),
-		(uint16_t)m_state.sspeed(),
 		0,
 		0
 	};
 
-	switch (m_state.step_mul()) {
-	case 0:
-		cmd.step_mul = 0;
-		break;
-	case 1:
-		cmd.step_mul = 1;
-		break;
-	case 5:
-		cmd.step_mul = 2;
-		break;
-	case 10:
-		cmd.step_mul = 3;
-		break;
-	case 20:
-		cmd.step_mul = 4;
-		break;
-	case 30:
-		cmd.step_mul = 5;
-		break;
-	case 40:
-		cmd.step_mul = 6;
-		break;
-	case 50:
-		cmd.step_mul = 7;
-		break;
-	case 100:
-		cmd.step_mul = 8;
-		break;
-	case 500:
-		cmd.step_mul = 9;
-		break;
-	case 1000:
-		cmd.step_mul = 10;
-		break;
-	}
-
+	
 	if (m_state.units() == UNITS_INCH)
 		cmd.state |= WHB04_STATE_UNIT_INCH;
 

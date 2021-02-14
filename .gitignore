@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Debug/xhc4mach.pdb
+/Debug/xhc4mach.lib
+/Debug/xhc4mach.ilk
+/Debug/xhc4mach.exp
+/Debug/hidapi.pdb
+/Debug/hidapi.lib
+/hidapi/Debug/hidapi.tlog
+/hidapi/Debug/hidapi.pdb
+/hidapi/Debug/hidapi.log
+/hidapi/Debug/hidapi.idb
+/hidapi/Debug/hidapi.Build.CppClean.log
+/hidapi/Debug/hid.obj
+/xhc4mach/Debug
+/xhc4mach/x64/Debug/xhc4mach.tlog
+/xhc4mach/x64/Debug

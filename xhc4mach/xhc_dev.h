@@ -173,15 +173,15 @@ struct whb04b6_out_data
 	{
 		uint16_t	p_int;
 		uint16_t	p_frac;
-	} pos[3];
+	} pos[6];
 
 	/* speed */
 	uint16_t	feedrate;
 	uint16_t	sspeed;
 
 	// do we need it ?
-	uint16_t	dummy1;
-	uint16_t	dummy2;
+	uint16_t    step_mul;
+	uint16_t    state;
 };
 
 #pragma pack( pop )
